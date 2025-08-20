@@ -1,0 +1,27 @@
+version: "3.9"
+services:
+  postgres:
+    image: postgres:16
+    container_name: pg16
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: market
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ../sql/postgres-init:/docker-entrypoint-initdb.d:ro
+
+  clickhouse:
+    image: clickhouse/clickhouse-server:24.6
+    container_name: clickhouse
+    ports:
+      - "8123:8123"   # HTTP
+      - "9000:9000"   # Native
+    volumes:
+      - chdata:/var/lib/clickhouse
+
+volumes:
+  pgdata:
+  chdata:

@@ -1,0 +1,9 @@
+pandas
+numpy
+requests
+pydantic
+SQLAlchemy
+psycopg2-binary
+clickhouse-connect
+python-dotenv
+loguru
